@@ -14,6 +14,7 @@ body {
   transform: translateX(-50%);
   top: -25%;
   visibility: hidden;
+  opacity: 0;
   width: 490px;
   border-radius: 5px;
   padding: 13px 17px 20px;
@@ -27,6 +28,7 @@ body {
 .popup.show {
   top: 2%;
   visibility: visible;
+  opacity: 1;
 }
 
 .popup.online {
