@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #121212;
+}
+
+.container {
+  display: flex;
+  font-size: 18px;
+  color: #f3f3f3;
+  background-color: #222;
+  max-width: 1000px;
+  padding: 10px 16px;
+  border-radius: 4px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+.title {
+  flex-shrink: 0;
+  line-height: 44px;
+  margin-right: 16px;
+}
+
+.container .list {
+  list-style: none;
+  line-height: 44px;
+  height: 44px;
+  overflow: hidden;
+  /* scroll-behavior: smooth; */
+}
