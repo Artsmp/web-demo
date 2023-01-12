@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --dark: #34495e;
+  --light: #fff;
+  --success: #0abf30;
+  --error: #e24d4c;
+  --warning: #e9bd0c;
+  --info: #3498db;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--dark);
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  list-style: none;
+}
+
+.notification :where(.toast, .column) {
+  display: flex;
+  align-items: center;
+}
+
+.notification .toast {
+  position: relative;
+  width: 400px;
+  border-radius: 4px;
+  padding: 0 16px;
+  height: 60px;
+  margin-bottom: 10px;
+  opacity: 1;
+  justify-content: space-between;
+  background: var(--light);
+  animation: show_toast 0.3s ease forwards;
+  max-height: 100px;
+  overflow: hidden;
+}
+
+@keyframes show_toast {
+  0% {
+    transform: translateX(100%);
+  }
+  70% {
+    transform: translateX(-5%);
+  }
+  90% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+.notification .toast.hide {
+  animation: hide_toast 0.3s forwards;
+  transition: all 0.3s linear 0.3s;
+  height: 0;
+  margin-bottom: 0;
+  opacity: 0;
+}
+
+@keyframes hide_toast {
+  0% {
+    transform: translateX(-10px);
+  }
+  70% {
+    transform: translateX(0%);
+  }
+  90% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: translateX(calc(100% + 20px));
+  }
+}
+
+.toast.success::after,
+.btn#success {
+  background: var(--success);
+}
+.toast.warning::after,
+.btn#warning {
+  background: var(--warning);
+}
+.toast.info::after,
+.btn#info {
+  background: var(--info);
+}
+.toast.error::after,
+.btn#error {
+  background: var(--error);
+}
+
+.toast.success .column i {
+  color: var(--success);
+}
+.toast.warning .column i {
+  color: var(--warning);
+}
+.toast.info .column i {
+  color: var(--info);
+}
+.toast.error .column i {
+  color: var(--error);
+}
+
+.notification .toast::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+  100% {
+    width: 0;
+  }
+}
+
+.toast .column i {
+  font-size: 1.75rem;
+}
+
+.toast .column span {
+  font-size: 1.07rem;
+  margin-left: 12px;
+}
+
+.toast i:last-child {
+  font-size: 1.2rem;
+  color: #aeb0d7;
+  cursor: pointer;
+}
+
+.toast i:last-child:hover {
+  color: var(--dark);
+}
+
+.buttons .btn {
+  border: none;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
