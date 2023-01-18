@@ -1,0 +1,116 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+section {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #121212;
+  color: #fff;
+}
+
+.flip {
+  position: relative;
+  border: 1px solid #ccc;
+  font-size: 100px;
+  font-weight: bold;
+  width: 100px;
+  text-align: center;
+  line-height: 148px;
+  height: 150px;
+}
+
+.front::after,
+.back::after {
+  background: linear-gradient(rgb(38, 37, 37) 0%, rgba(6, 15, 38, 1) 50%);
+}
+
+.front::before,
+.back::before {
+  background: linear-gradient(rgba(6, 15, 38, 1) 0%, rgb(38, 37, 37) 50%);
+}
+
+.front::before,
+.back::before {
+  content: attr(data-number);
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  transform-origin: bottom;
+  overflow: hidden;
+}
+
+.front::after,
+.back::after {
+  content: attr(data-number);
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  transform-origin: top;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotateX(0deg);
+  z-index: 2;
+}
+.back::before {
+  perspective: 300px;
+  z-index: 2;
+  transform-origin: bottom;
+  transform: rotateX(90deg);
+  backface-visibility: hidden;
+}
+@keyframes rotate2 {
+  0% {
+    transform: rotateX(180deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+.back::after {
+  border-top: 1px solid #ccc;
+  perspective: 300px;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotateX(0);
+  z-index: 1;
+}
+
+.front::after {
+  border-top: 1px solid #ccc;
+  perspective: 300px;
+  transform: rotateX(0deg);
+}
+
+.front.running::after {
+  animation: rotate 1s infinite;
+}
+
+.back.running::before {
+  animation: rotate2 1s infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}

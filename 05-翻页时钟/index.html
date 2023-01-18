@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <section>
+      <div class="flip">
+        <div class="front" data-number="0"></div>
+        <div class="back" data-number="1"></div>
+      </div>
+    </section>
+  </body>
+  <script>
+    const front = document.querySelector('.front');
+    const back = document.querySelector('.back');
+    let num = 0;
+    setInterval(() => {
+      if (num > 9) {
+        num = 0;
+      }
+      front.setAttribute('data-number', num);
+      back.setAttribute('data-number', ++num);
+      front.classList.add('running');
+      back.classList.add('running');
+      // setTimeout(() => {
+      //   front.classList.remove('running');
+      //   back.classList.remove('running');
+      // }, 1000);
+    }, 1000);
+  </script>
+</html>
